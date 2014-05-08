@@ -1,0 +1,17 @@
+		{% extends "2colwithtitle.html" %}
+
+	{% block shoplist %}
+							<div class="content-col">
+								<article class="post-holder">
+								<form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+								{% csrf_token %}
+	<input type="hidden" name="ik_co_id" value="531067d3bf4efc6b2724d9b4" />
+	<input type="hidden" name="ik_pm_no" value="1" />
+	<input type="hidden" name="ik_am" value="444" />
+	<input type="hidden" name="ik_cur" value="RUB" />
+	<input type="hidden" name="ik_desc" value="dfgdfg" />
+    <input type="submit" value="Pay">
+</form>
+	</article>
+							</div>
+		{% endblock shoplist %}

@@ -1,0 +1,13 @@
+{% extends "wide.html" %}
+{% block widecontent %}
+<h1>Статус заказа № {{ payment.paymentid }}: успешно оплачен</h1>
+
+{% if not payment.link_activated %}
+    <h4 style="margin-bottom:38%!important"><br>Благодарим за покупку!<br> <br><a href="{{link}}">Ссылка на скачивание архива с книгами</a></h4>
+    {% else %}
+     <h4 style="margin-bottom:38%!important">Ссылка на скачивание была уже активирована.<br><br>
+    Если Вы хотите скачать архив с файлами, отправьте пустое письмо с темой "Заказ № {{payment.paymentid}}" с Вашего email {{payment.email}}, и мы вышлем Вам новую ссылку в течение 24 часов. <br><br>
+    Благодарим за покупку!</h4>
+{% endif %}
+
+{% endblock %}

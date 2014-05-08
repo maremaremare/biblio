@@ -1,0 +1,67 @@
+ {% extends "basehome.html" %}
+
+{% block content %}
+
+{% load solo_tags %} {% get_solo 'homepage.Homepage' as object %}
+ <section id="main_slider">
+            <section class="container-fluid container tophp ">
+                <section class="row-fluid">
+                    <div class="slider_content">
+                  
+                        <h2>{{ object.title }}</h2>
+                          <h4>{{ object.subtitle }}</h4>
+                        <p>{{object.description|safe}}</p>
+
+
+                    </div>
+
+                    <div class="slider1 span5">
+
+                    {% for book in books %}
+                                         <div class="slide">
+                            <img src="{{book.cover_hp.url}}" class="cover1 imgborder">
+                           <div style="margin-bottom:30px; margin-top:10px; text-align:center">
+                                <a href="#" id ="{{book.id}}"class="purchase addtocart"> Купить <span>{{book.price}} руб.</span> </a> 
+                                     <a href="{{book.get_absolute_url}}" class="purchase">Подробнее </a> </div>
+                        </div>
+                    {% endfor %}
+     
+
+                    </div>
+
+
+                </section>
+            </section>
+ <section class="authors">
+
+        <section class="container container-fluid">
+          <section class="row-fluid">
+
+                <h1 class="floatl">НАШИ АВТОРЫ:</h1>
+                <div class="slider2">
+
+{% for author in authors %}
+            <div class="authcar">
+                       <img src="{{author.thumb.url}}" class="floatl">
+                            <h3><a href="{{author.get_absolute_url}}">{{ author.name }}</a></h3>
+                          <div class="authdesc">  {{ author.description }}</div>
+                            
+                        </div>
+                        
+{% endfor %}
+</div>
+     
+
+
+                        </div>
+</section>
+</section>
+</section>
+
+        </section>
+        <!-- End Main Slider -->
+      
+<div id="popup" class="white-popup mfp-hide">
+    <div id="popupcontent"></div>
+</div>
+ {% endblock %}       

@@ -1,0 +1,56 @@
+{% extends "2colwithtitle.html" %} {% block shoplist %}
+<div class="content-col">
+    <article class="post-holder">
+
+        <div style="float:left; margin-right:10px ">
+            <img src="{{ object.cover_full.url }}" class="imgborder">
+            {% if object.example_file %}
+                <br><a href="{{object.example_file.url}}">Скачать ознакомительный фрагмент</a>
+            {% endif %}
+        </div>
+        <div style="">
+            <h4>Электронная книга</h4>
+            <h1>{{ object.title }}</h1>
+            <h2>{{ object.author.name }}</h2>
+
+
+            <a href="#" class="addtocart shopbuttons" id="{{ object.id }}">Добавить в корзину</a>
+<hr>
+<br>
+<br>
+           {% if object.pages %}
+                <p><span class="bold">Объем:</span> {{ object.pages }}</p>
+            {% endif %} 
+            <p><span class="bold">Метки:</span> {% for tag in object.tags.all %}
+
+
+    {% if forloop.last %}
+         <a href="http://biblio.land/shop/tags/{{ tag.slug }}">{{ tag }}</a>
+    {% else %}
+         <a href="http://biblio.land/shop/tags/{{ tag.slug }}">{{ tag }}</a>,
+    {% endif %}
+
+
+               
+                {% endfor %}
+
+            </p>
+            <p><span class="bold">Книга доступна в форматах:</span> {% for file in object.files.all %}
+                {{ file.extension }} 
+            {% endfor %}</p>
+            <hr>
+
+            <div>{{object.description}}</div>
+        </div>
+
+    </article>
+
+
+</div>
+<div id="popup" class="white-popup mfp-hide">
+    <div id="popupcontent"></div>
+</div>
+
+
+
+{% endblock shoplist %} 

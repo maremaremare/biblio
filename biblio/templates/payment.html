@@ -1,0 +1,43 @@
+
+
+<h1>Заказ № {{ payment.paymentid }}</h1>
+{{ log }}
+<ul class="post-list">
+{% for item in payment.books.all %}
+    <li>
+   <!--      <div class="img-holder-l">
+            <img src="images/image19.jpg" alt="" />
+        </div> -->
+        <div class="img-cap-r">
+            <p><a href="#">{{ item.title }}</a> (
+            
+
+            {% for file in payment.files.all  %}
+            {% if file.book == item %}
+                {{ file.extension }}
+            {% endif %}
+                
+            {% endfor %})</p>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<h3> Всего: {{ payment.get_amount }} руб.</h3>
+<div>
+<h3>Ваш email</h3>
+{{ payment.email }}
+</div>
+<br>
+
+<form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+    <input type="hidden" name="ik_co_id" value="533d0ef0bf4efc7b0b13c2d7" />
+    <input type="hidden" name="ik_pm_no" value="{{  payment.paymentid  }}" />
+    <input type="hidden" name="ik_am" value="{{  payment.get_amount  }}" />
+    <input type="hidden" name="ik_cur" value="RUB" />
+    <input type="hidden" name="ik_desc" value="Электронные книги" />
+        <input type="submit" class ="purchase" value="Оплатить">
+        <a href="#" class="purchase closebasket">Отменить</a>
+</form>
+
+

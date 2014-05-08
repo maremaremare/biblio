@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- Start Inner Page Holder -->
+		<section id="inner-page-holder">
+		<!-- Start Inner Page Title Bar -->
+		{% include "title.html" %}
+
+		<!-- End Inner Page Title Bar -->
+		
+		<!-- Start Inner Main Content Holder -->
+			<section id="col-holder">
+				<section class="container-fluid container">
+					<section class="row-fluid h100">
+
+					{% block widecontent %}
+					{% endblock %}
+				
+					</section>
+				</section>
+			</section>
+		<!-- End Inner Main Content Holder -->
+		
+		</section>
+
+
+{% endblock content %}
+
+   {% block customscript %}
+    {% endblock customscript %}

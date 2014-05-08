@@ -1,0 +1,88 @@
+<div class="right-col">
+    <div class="widget-holder">
+        <h4>Авторы</h4>
+        <ul class="cat-list">
+            {% for auth in authors %}
+            <li><a href="{{ auth.get_absolute_url }}">{{ auth.name }}</a>
+            </li>
+            {% load sort %} {% if auth.categories.all %}
+
+
+            <ul>
+                {% for category in auth.categories.all %}
+                <li><a href="{{ category.get_absolute_url }}">{{category.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% endif %} {% endfor %}
+
+
+        </ul>
+    </div>
+
+    <div class="widget-holder tags">
+        <h4>Метки</h4>
+        {% load taggit_extras %} {% get_taglist as tags %} {% for tag in tags %}
+        <a href="/shop/tags/{{ tag.slug }}">{{ tag }} <i class="icon-circle"></i></a>
+        {% endfor %}
+    </div>
+
+
+    <div class="widget-holder">
+        <div id="content">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#popular" data-toggle="tab" class="myt active">Популярное</a>
+                </li>
+                <li><a href="#recent" data-toggle="tab" class="myt">Новое</a>
+                </li>
+            </ul>
+            <div id="my-tab-content" class="tab-content">
+                <div class="tab-pane active" id="popular">
+
+                    <ul class="post-list">
+
+                        {% for book in popular %}
+
+
+                        <li>
+                            <div class="img-holder-l">
+                                <img src="{{book.cover_cart.url}}" class="imgborder" alt="" />
+                            </div>
+                            <div class="img-cap-r">
+                                <p><a href="{{book.get_absolute_url}}">{{book.title}} <br>({{book.author.name}})</a>
+                                </p>
+
+                            </div>
+                        </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="tab-pane" id="recent">
+
+                    <ul class="post-list">
+                        {% for book in new %}
+
+
+                        <li>
+                            <div class="img-holder-l">
+                                <img src="{{book.cover_cart.url}}" class="imgborder" alt="" />
+                            </div>
+                            <div class="img-cap-r">
+                                <p><a href="{{book.get_absolute_url}}">{{book.title}}<br> ({{book.author.name}})</a>
+                                </p>
+
+                            </div>
+                        </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

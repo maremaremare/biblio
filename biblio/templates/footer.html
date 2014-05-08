@@ -1,0 +1,30 @@
+    <!-- Start Footer Section -->
+      <section id="footer" class="ptb">
+        <section class="container container-fluid">
+          <section class="row-fluid">
+
+            <div class="span3"><h3>Последние книги</h3>
+ {% for book in new %}
+
+
+                       
+                         <a href="{{book.get_absolute_url}}">       <img src="{{book.cover_cart.url}}" class="imgborder" alt="" /></a>
+               
+                        {% endfor %}
+
+
+            </div>
+            <div class="span3 tags"><h3>Метки</h3>        {% load taggit_extras %} {% get_taglist as tags %} {% for tag in tags %}
+        <a href="/shop/tags/{{ tag.slug }}">{{ tag }} <i class="icon-circle"></i></a>
+        {% endfor %}</div>
+
+            <div class="span3"><h3>Служба поддержки</h3><i class="icon-envelope"></i> support@biblio.land
+
+<h3>По вопросам сотрудничества</h3><i class="icon-envelope"></i> ykrotov@yahoo.com
+            <h3>Телефон</h3><i class="icon-phone"></i> 8 (903) 677-53-59</div>
+            <div class="span3"><h3>Магазин Библиоленд</h3>Сделано <a href="http://clockworkweb.ru">clockworkweb.ru</a><br>
+            Дизайн - <a href="http://themeforest.net/user/CrunchPress?WT.ac=item_profile_text&WT.seg_1=item_profile_text&WT.z_author=CrunchPress">CrunchPress</a> <br>  Все электронные книги защищены авторским правом.<br>copyright biblio.land 2014</div>
+          </section>
+        </section>
+      </section>
+    <!-- End Footer Section -->

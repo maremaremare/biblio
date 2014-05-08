@@ -1,0 +1,23 @@
+
+		{% load sitetree %}
+<section id="title-bar" class="content-col">
+				<section class="container-fluid container">
+					<section class="row-fluid">
+						<article class="span8">
+							<h2>
+
+{% if sitetree_page_title %}
+							{% sitetree_page_title from "sidebarmenu" %}
+{% else %}
+{{object.title}} 					
+{% endif %}
+
+</h2>					
+</p>
+{% sitetree_breadcrumbs from "sidebarmenu" template "breadcrumbs.html" %}
+						</article>
+	
+					</section>
+				</section>
+			</section>
+

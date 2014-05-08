@@ -1,0 +1,57 @@
+{% extends "2colwithtitle.html" %} {% block shoplist %}
+<div class="content-col">
+    <article class="post-holder">
+        <ul class="post-list">
+            {% load pagination_tags %} {% autopaginate object_list 3 %} {% for book in object_list %}
+
+            <li>
+
+                <div class="buttons column istable">
+                    <div class="table-cell">
+                        <div class="center-block">
+                            <a href="#" id="{{ book.id }}" class="addtocart shopbuttons">В корзину ({{ book.price }} руб.)</a>
+                            <br>
+                            <a href="{{ book.get_absolute_url }}" class="shopbuttons">Подробнее </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="img-holder-book column istable">
+                    <div class="table-cell">
+                        <div class="center-block">
+                            <img src="{{ book.cover_shoplist.url }}" class="imgborder" alt="" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="book-description column">
+                    <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    </h3>
+                    <h5><a href="{{ book.author.get_absolute_url }}">{{ book.author.name }}</a>
+                    </h5>
+                    <p>{{ book.description|truncatewords:30 }}</p>
+                </div>
+
+
+            </li>
+            {% endfor %}
+
+
+        </ul>
+
+    </article>
+    {% paginate %}
+
+</div>
+
+<div id="popup" class="white-popup mfp-hide">
+    <div id="popupcontent"></div>
+</div>
+{% endblock shoplist %}

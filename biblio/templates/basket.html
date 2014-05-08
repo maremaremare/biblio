@@ -1,0 +1,30 @@
+<h1>В вашей корзине</h1>
+
+<ul class="post-list">
+    {% for item in cartitems %}
+    <li>
+
+        <div class="bookitem" bid = "{{item.book_id}}">
+        <a href="" class="delete" id = "{{ item.book_id }}">&#215;</a>
+            <h4>{{ item.title }} <span class="pricecart">{{ item.price }} руб.</span>
+</h4> <p>({{item.author}})</p>
+{% for x in item.variants %}
+  <span class="format"> <input type="checkbox" name="extension" value="{{ x }}">{{ x }} </span>
+{% endfor %}
+       
+            
+            
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<hr>
+<h4>Всего: {{ amount }} руб.</h4><br>
+<div class="email">
+<h3>Введите email</h3>
+<input type="text" name="email" class="emailinput">
+</div>
+<br>
+<a href="#" class="purchase showemail b">К оплате</a>
+<a href="#" class="purchase closebasket">Продолжить покупки</a>

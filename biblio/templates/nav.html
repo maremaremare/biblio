@@ -1,0 +1,28 @@
+
+      <header id="header">
+        <section class="container-fluid container">
+          <section class="row-fluid">
+            <div class="logo span3">
+             <a href="/"><img src="{{ STATIC_URL }}/images/logo.png" alt="Bookish Theme Logo"  />      <h1>Библиоленд</h1>
+              <h2>книжный магазин</h2></a>
+        
+            </div>
+			<nav id="nav">
+            <div class="navbar navbar-inverse pull-right span9">
+              <div class="navbar-inner">
+                <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <div class="nav-collapse collapse">
+                 
+                 {% load sitetree %}
+                 {% sitetree_menu from "menu" include "trunk,topmenu" template "menu.html" %}
+                 
+                </div>
+                <!--/.nav-collapse -->
+              </div>
+              <!-- /.navbar-inner -->
+            </div>
+            <!-- /.navbar -->
+			</nav>
+          </section>
+        </section>
+      </header>
