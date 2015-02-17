@@ -39,19 +39,21 @@ class CartView():
     def post(self, request, *args, **kwargs):
         if request.POST.has_key('email'):
             extensions = request.POST['extensions']
-            ext_list = extensions.split(' ')
+            import json
+            ext_dict = json.loads(extensions)
+            
             newpayment = Payment(email=request.POST['email'], )
             cart = request.session.get('cart', [])
             paymlog = ''
             newpayment.save()
             for x in cart:
-                y = Book.objects.get(id=x['book_id'])
+                #y = Book.objects.get(id=x['book_id'])
                 newpayment.books.add(Book.objects.get(id=x['book_id']))
-            for x in ext_list:
-                bookid = x.split(':')[0]
+            for k, v in ext_dict:
+                bookid = k
                 bookfiles = BookFile.objects.filter(book__id=bookid)
                 for z in bookfiles:
-                    if z.extension() == x.split(':')[1]:
+                    if z.extension() == v:
                         newpayment.files.add(z)
 
             return TemplateResponse(request, 'payment.html', {'payment': newpayment, 'log': paymlog, 'amount': newpayment.get_amount()})
